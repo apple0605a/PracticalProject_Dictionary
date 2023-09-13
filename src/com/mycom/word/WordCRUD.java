@@ -99,8 +99,29 @@ public class WordCRUD implements ICRUD{		//뒷 내용 입력하고 WordCRUD 자�
 		System.out.println("단어가 수정되었습니다.");
 	}
 
-	public void deleteItem() {
-		// TODO Auto-generated method stub
+	public void deleteItem() {	//update 내용과 유사 (복사해서 수정하면 편함)
+		System.out.print("=> 삭제할 단어 검색 : ");
+		String keyword = s.next();		//keyword에 scanner로 받음, next - 공백 허용 X
+		ArrayList<Integer> idlist = this.listAll(keyword);	//단어 리스트 돌려서 번호 리스트로 받아옴
+		
+		System.out.print("=> 삭제할 번호 선택 : ");
+		int id = s.nextInt();
+		s.nextLine();	//엔터 먹어줌
+
+		System.out.print("=> 정말로 삭제하시겠습니까? (Y/n) : ");
+		String ans = s.next();	//한글자만 입력받음 => next 사용
+		
+		if (ans.equalsIgnoreCase("Y")) {	//equals - 같은 글자일 때 true, equalsIgnoreCase - 대소문자 구분 없이 equals 실행
+			list.remove((int)idlist.get(id-1));			//remove - index에 있는 값 삭제 (정수 받음) => Integer 객체로 되어 있는 값 int로 캐스팅 
+			System.out.println("단어가 삭제되었습니다.");
+		}
+		else {
+			System.out.println("취소되었습니다.");
+		}
+		
+//		Word word = list.get(idlist.get(id-1));		//id - 찾아서 나온 순서 (보이는 숫자는 index에서 +1 된거)
+//		word.setMeaning(meaning);		//meaning 재설정
+//		System.out.println("단어가 수정되었습니다.");
 		
 	}
 
