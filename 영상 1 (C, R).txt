@@ -1,0 +1,64 @@
+CRUD -> File 사용 -> DB 사용
+
+Word class - 데이터클래스
+ICRUD interface - CRUD를 위한 interface		(함수 이름 템플릿)
+WordCRUD class - ICRUD interface 구현체		(ICRUD 실제 구현, 단어 다룸)
+WordManager class - wordCRUD를 사용한 실제 관리	(전체 프로젝트 관리, UI)
+Main class - static main 함수, starter class		(WordManager 호출 → 프로그램 시작)
+
+________________________________________________________________________________________________________
+
+패키지 구성
+
+ICRUD interface
++ add() : int
++ update() : int
++ delete() : int
++ select(object o) : void
+
+	↑
+WordCRUD class	←	Word class
+	↑
+WordMan class
+	↑
++ main() : void
+
+________________________________________________________________________________________________________
+
+CRUD 작성 및 테스트
+
+WordManager class
+	selectMenu 함수
+WordCRUD class
+	Create - Word 추가
+	Read - Word 조회
+Word class
+	toString() - Read 등 기능 사용 시 Word의 정보 출력
+			★overriding 사용
+
+select 내용
+System.out.println("*** 영단어 마스터 ***\n"
+				+ "***************\n"
+				+ "1. 모든 단어 보기\n"
+				+ "2. 수준별 단어 보기\n"
+				+ "3. 단어 검색\n"
+				+ "4. 단어 추가\n"
+				+ "5. 단어 수정\n"
+				+ "6. 단어 삭제\n"
+				+ "7. 파일 저장\n"
+				+ "0. 단어 검색\n"
+				+ "***************\n"
+				+ "=> 원하는 메뉴는? > ");
+
+
+_________________________________________________________________
+
+데이터 조회 (Read)
+
+WordManager class
+	모든 단어 보기 메뉴 처리	(1번, 2번)
+WordCRUD class
+	listAll() 함수 생성	(모든 단어 보기 기능에 해당하는 함수)
+Word class
+	toString() - overriding	(listAll에서 Word에 있는거 불러오면 됨)
+				toString() - Object class에 존재, 요 함수 재정의해서 사용	(Object class - 모든 클래스의 가장 최상위 클래스)
