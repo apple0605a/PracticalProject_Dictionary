@@ -32,11 +32,11 @@ public class WordCRUD implements ICRUD{		//뒷 내용 입력하고 WordCRUD 자�
 		return new Word(0, level, word, meaning);
 	}
 	
-	public void addWord() {		//WordManager에서 호출할 함수 => list에 추가까지 돼야함
+	public void addItem() {		//WordManager에서 호출할 함수 => list에 추가까지 돼야함
 		Word one = (Word)add();	//add 리턴 타입 Word로 캐스팅
 		list.add(one);			//list에 add로 받은 Word 추가
 		System.out.println("새 단어가 단어장에 추가되었습니다.");
-	}	//완성한 addWord 함수는 WordManager에서 호출
+	}	//완성한 addItem 함수는 WordManager에서 호출
 
 	@Override
 	public int update(Object obj) {

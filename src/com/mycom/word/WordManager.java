@@ -35,7 +35,7 @@ public class WordManager {
 			if (menu == 0) break;
 			
 			if (menu == 4) {	//create
-				wordCRUD.addWord();		//addWord 함수는 WordCURD에 있는 함수임	=> WordCRUD 멤버 변수 선언 필요
+				wordCRUD.addItem();		//addItem 함수는 WordCURD에 있는 함수임	=> WordCRUD 멤버 변수 선언 필요
 			}
 			
 			else if (menu == 1) {	//list
