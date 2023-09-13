@@ -32,7 +32,10 @@ public class WordManager {
 	public void start() {	//본 클래스에서 main역할 하는 함수, Main에서 호출
 		while(true) {	//0 입력 전까지 반복
 			int menu = selectMenu();
-			if (menu == 0) break;
+			if (menu == 0) {
+				System.out.println("프로그램 종료.");
+				break;
+			}
 			
 			if (menu == 4) {	//create
 				wordCRUD.addItem();		//addItem 함수는 WordCURD에 있는 함수임	=> WordCRUD 멤버 변수 선언 필요
