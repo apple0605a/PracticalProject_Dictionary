@@ -30,6 +30,8 @@ public class WordManager {
 	}
 	
 	public void start() {	//본 클래스에서 main역할 하는 함수, Main에서 호출
+		
+		wordCRUD.loadFile();
 		while(true) {	//0 입력 전까지 반복
 			int menu = selectMenu();
 			if (menu == 0) {

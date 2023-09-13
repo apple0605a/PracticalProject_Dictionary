@@ -1,13 +1,19 @@
 //WordCRUD : ICURD를 구현한 구현체
 package com.mycom.word;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WordCRUD implements ICRUD{		//뒷 내용 입력하고 WordCRUD 자리에 마우스 올리면 ICRUD에서 구현한 함수 불러옴
 	ArrayList<Word> list;		//동적으로 데이터 관리할 수 있는 array		얘도 ArrayList import해줌
 	Scanner s;	//입력받을거 선언	얘도 import
-
+	
+	final String fname = "Dictionary.txt";		//final - 변경 X
+												//파일 저장 경로 나중에 함 확인
 	/*
 	 * 데이터 입력받음
 	 * 입력 받은 데이터를 리스트에 저장 
@@ -106,7 +112,7 @@ public class WordCRUD implements ICRUD{		//뒷 내용 입력하고 WordCRUD 자�
 		
 		System.out.print("=> 삭제할 번호 선택 : ");
 		int id = s.nextInt();
-		s.nextLine();	//엔터 먹어줌
+		s.nextLine();	//엔터 먹어줌 
 
 		System.out.print("=> 정말로 삭제하시겠습니까? (Y/n) : ");
 		String ans = s.next();	//한글자만 입력받음 => next 사용
@@ -118,11 +124,37 @@ public class WordCRUD implements ICRUD{		//뒷 내용 입력하고 WordCRUD 자�
 		else {
 			System.out.println("취소되었습니다.");
 		}
-		
-//		Word word = list.get(idlist.get(id-1));		//id - 찾아서 나온 순서 (보이는 숫자는 index에서 +1 된거)
-//		word.setMeaning(meaning);		//meaning 재설정
-//		System.out.println("단어가 수정되었습니다.");
-		
 	}
+	
+	public void loadFile() {		//파일 한 줄씩 읽어서 Word객체로 만들어 list에 추가	★파일 닫기 필수
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(fname));
+			
+			String line;
+			int count = 0;	//읽은 개수 출력 시 사용할 함수
+			
+			while(true){	//문서 끝까지 읽어야함
+				line = br.readLine();	//한 줄 씩 불러옴
+				if (line == null) break;	//비었으면 마지막 도착 => 종료해야함
+				
+				String data[] = line.split("\\|");		//data[]안에 찢어서 각각 data[0]부터 차례로 저장, '|'으로 난이도, 단어, 뜻 구분했음
+														//split에 들어간거 기준으로 잘라줌, '|'는 문자로 인식하려면 '\\' 붙여줘야함
+				int level = Integer.parseInt(data[0]);	//Integer.parseInt - 문자열 숫자로 바꿔줌
+				String word = data[1];
+				String meaning = data[2];
+				
+				list.add(new Word(0, level, word, meaning));	//Word 파라미터 받는거 있음
+				
+				++count;		//읽었으니까 카운트 1 추가
+			}
+			br.close();		//파일 열었으면 닫아줘야함, 오류 발생하면 catch로 오류 잡아줘야함
+			System.out.println("==> " + count + "개 로딩 완료!!!");
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		//파일리더 받음, 파일명 - 변수로 생성해줌 (활용 빈도 高), 각 함수 import 해줘야함, 파일 없을 때 오류 처리 위해 try-catch문 사용
+	}
+	
 
 }
