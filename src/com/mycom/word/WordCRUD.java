@@ -179,7 +179,7 @@ public class WordCRUD implements ICRUD{		//뒷 내용 입력하고 WordCRUD 자�
 
 	public void saveFile() {
 		try {
-			PrintWriter pr = new PrintWriter(new FileWriter("test.txt"));	//try/catch로 버그 잡음
+			PrintWriter pr = new PrintWriter(new FileWriter(fname));	//try/catch로 버그 잡음
 			
 			for (Word one : list) {	//리스트에서 하나씩 꺼내옴
 				pr.write(one.toFileString() + "\n");	//write는 줄넘김 입력 안해서 넣어줘야함
