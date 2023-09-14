@@ -199,6 +199,12 @@ public class WordCRUD implements ICRUD{		//뒷 내용 입력하고 WordCRUD 자�
 		int level = s.nextInt();
 		listAll(level);
 	}
+
+	public void searchWord() {
+		System.out.print("원하는 단어는? : ");
+		String keyword = s.next();	//next - 공백 전까지만 받음
+		listAll(keyword);
+	}
 	
 
 }
