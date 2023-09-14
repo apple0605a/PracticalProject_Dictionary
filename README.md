@@ -1,4 +1,4 @@
-# PracticalProject-1_Dictionary
+# PracticalProject_Dictionary
 # 단어장 CRUD 프로그램
 
 프로그램 실행 결과 화면
