@@ -13,6 +13,10 @@ public class Word {
 		return str;
 	}	//wordCRUD에서 요거 씀
 	
+	public String toFileString() {	//파일에 입력하는 형식대로 리턴
+		return this.level + "|" + this.word + "|" + this.meaning;
+	}
+	
 	private int id;
 	private int level;
 	private String word;

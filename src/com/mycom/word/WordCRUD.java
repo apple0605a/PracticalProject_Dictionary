@@ -4,7 +4,9 @@ package com.mycom.word;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -154,6 +156,23 @@ public class WordCRUD implements ICRUD{		//뒷 내용 입력하고 WordCRUD 자�
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		//파일리더 받음, 파일명 - 변수로 생성해줌 (활용 빈도 高), 각 함수 import 해줘야함, 파일 없을 때 오류 처리 위해 try-catch문 사용
+	}
+
+	public void saveFile() {
+		try {
+			PrintWriter pr = new PrintWriter(new FileWriter("test.txt"));	//try/catch로 버그 잡음
+			
+			for (Word one : list) {	//리스트에서 하나씩 꺼내옴
+				pr.write(one.toFileString() + "\n");	//write는 줄넘김 입력 안해서 넣어줘야함
+			}
+			
+			pr.close();	//파일 저장 종료하면 파일 닫기
+			System.out.println("==> 데이터 저장 완료.");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	//PrintWriter 사용 위해 객체화, 
+		
 	}
 	
 
