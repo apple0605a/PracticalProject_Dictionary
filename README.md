@@ -3,8 +3,13 @@
 
 #프로그램 실행 결과 화면
 
+
+
+
 1
-![1](https://github.com/apple0605a/PracticalProject_Dictionary/assets/124647328/8b659bfa-12af-4408-8038-f72bba155bd2)
+<img
+  src="![1](https://github.com/apple0605a/PracticalProject_Dictionary/assets/124647328/8b659bfa-12af-4408-8038-f72bba155bd2)"
+/>
 
 2
 ![2](https://github.com/apple0605a/PracticalProject_Dictionary/assets/124647328/2e774ede-77bd-4af6-abfb-ed82f8a5a729)
