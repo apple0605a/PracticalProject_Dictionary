@@ -47,6 +47,14 @@ public class WordManager {
 				wordCRUD.listAll();
 			}
 			
+			else if (menu == 2) {	//수준별 단어 보기
+				wordCRUD.searchLevel();
+			}
+			
+			else if (menu == 3) {	//단어 검색
+				wordCRUD.listAll();
+			}
+			
 			else if (menu == 5) {	//update
 				wordCRUD.updateItem();	//새로운 함수 입력하고 설정하면 함수 자동으로 만들어짐
 			}

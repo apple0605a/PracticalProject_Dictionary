@@ -77,9 +77,10 @@ public class WordCRUD implements ICRUD{		//뒷 내용 입력하고 WordCRUD 자�
 		
 		ArrayList<Integer> idlist = new ArrayList<>();		//idlist - 리턴할 ArrayList, list의 번호 받음
 		
+		int j = 0;		//단어 앞에 붙일 번호
+		
 		System.out.println("--------------------------------");
 		for (int i = 0; i < list.size(); ++i) {	//
-			int j = 0;		//단어 앞에 붙일 번호
 			String word = list.get(i).getWord();	//리스트에서 word 가져옴
 			if(!word.contains(keyword)) continue;	//keyword로 받은 단어가 리스트에서 가져온 word에 포함 안돼있으면 continue (포함하면 밑에 내용 실행)
 			System.out.print((++j) + " ");			//번호 출력
@@ -90,6 +91,24 @@ public class WordCRUD implements ICRUD{		//뒷 내용 입력하고 WordCRUD 자�
  		
 		return idlist;
 	}
+	
+	public void listAll(int level) {		//overriding, 검색할 레벨 입력받아 출력
+		ArrayList<Integer> idlist = new ArrayList<>();		//idlist - 리턴할 ArrayList, list의 번호 받음
+		
+		int j = 0;		//단어 앞에 붙일 번호
+		
+		System.out.println("--------------------------------");
+		for (int i = 0; i < list.size(); ++i) {	//
+			int ilevel = list.get(i).getLevel();	//리스트에서 레벨 가져옴
+			if(ilevel != level) continue;	//레벨 다르면 넘어감, 레벨 같으면 이하 내용 수행
+			System.out.print((++j) + " ");			//번호 출력
+			System.out.println(list.get(i).toString());		//단어 출력
+		}
+		System.out.println("--------------------------------");
+	}
+	
+	
+	
 
 	public void updateItem() {
 		System.out.print("=> 수정할 단어 검색 : ");
@@ -173,6 +192,12 @@ public class WordCRUD implements ICRUD{		//뒷 내용 입력하고 WordCRUD 자�
 			e.printStackTrace();
 		}	//PrintWriter 사용 위해 객체화, 
 		
+	}
+
+	public void searchLevel() {
+		System.out.print("=> 원하는 레벨은? : ");
+		int level = s.nextInt();
+		listAll(level);
 	}
 	
 
